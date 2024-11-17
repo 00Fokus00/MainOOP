@@ -20,11 +20,11 @@ public class StudentComporatorTest {
     private static final String STUDENT_2_NAME = "Lev";
     private static final String STUDENT_2_SURNAME = "Tolstoy";
 
-    private static final String GROUP_1_NUMBER = "6";
-    private static final String GROUP_1_SUBNUMBER = "2";
+    private static final String GROUP_1_NAME = "EnglishGroup";
+    private static final String GROUP_1_NUMBER = "1";
 
-    private static final String GROUP_2_NUMBER = "7";
-    private static final String GROUP_2_SUBNUMBER = "1";
+    private static final String GROUP_2_NAME = "SpanishGroup";
+    private static final String GROUP_2_NUMBER = "2";
 
     private static List<Student> sortingByName;
     private static List<Student> sortingByNameAndGroup;
@@ -44,8 +44,8 @@ public class StudentComporatorTest {
                 .setSurname(STUDENT_1_SURNAME)
                 .setGroup(
                         new Group()
-                                .setNumberGroup(GROUP_1_NUMBER)
-                                .setNubmberSubgroup(GROUP_1_SUBNUMBER)
+                                .setNameGroup(GROUP_1_NAME)
+                                .setNubmberGroup(GROUP_1_NUMBER)
                 ));
 
         student.add(new Student()
@@ -53,8 +53,8 @@ public class StudentComporatorTest {
                 .setSurname(STUDENT_2_SURNAME)
                 .setGroup(
                         new Group()
-                                .setNumberGroup(GROUP_2_NUMBER)
-                                .setNubmberSubgroup(GROUP_2_SUBNUMBER)
+                                .setNameGroup(GROUP_2_NAME)
+                                .setNubmberGroup(GROUP_2_NUMBER)
                 ));
 
         student.sort(new NameStudentsComparator());
@@ -68,7 +68,7 @@ public class StudentComporatorTest {
     }
 
     @Test
-    @DisplayName("Сортировка только по имени и группе")
+    @DisplayName("Сортировка по имени и группе")
     void sortBookByNameAndGroup(){
         var student = new ArrayList<Student>();
         student.add(new Student()
@@ -76,8 +76,8 @@ public class StudentComporatorTest {
                 .setSurname(STUDENT_1_SURNAME)
                 .setGroup(
                         new Group()
-                                .setNumberGroup(GROUP_1_NUMBER)
-                                .setNubmberSubgroup(GROUP_1_SUBNUMBER)
+                                .setNameGroup(GROUP_1_NAME)
+                                .setNubmberGroup(GROUP_1_NUMBER)
                 ));
 
         student.add(new Student()
@@ -85,8 +85,8 @@ public class StudentComporatorTest {
                 .setSurname(STUDENT_2_SURNAME)
                 .setGroup(
                         new Group()
-                                .setNumberGroup(GROUP_2_NUMBER)
-                                .setNubmberSubgroup(GROUP_2_SUBNUMBER)
+                                .setNameGroup(GROUP_2_NAME)
+                                .setNubmberGroup(GROUP_2_NUMBER)
                 ));
 
         student.sort(Comparator.comparing(Student::getName).thenComparing(Student::getGroup));
@@ -94,7 +94,7 @@ public class StudentComporatorTest {
         for (int i = 0; i < student.size(); i++) {
             assertThat(student.get(i))
                     .usingRecursiveComparison()
-                    .ignoringFields("surname", "group.nubmberSubgroup")
+                    .ignoringFields("surname", "group.nubmberGroup")
                     .isEqualTo(sortingByNameAndGroup.get(i));
         }
     }
@@ -106,16 +106,16 @@ public class StudentComporatorTest {
                         .setSurname(STUDENT_1_SURNAME)
                         .setGroup(
                                 new Group()
-                                        .setNumberGroup(GROUP_1_NUMBER)
-                                        .setNubmberSubgroup(GROUP_1_SUBNUMBER)
+                                        .setNameGroup(GROUP_1_NAME)
+                                        .setNubmberGroup(GROUP_1_NUMBER)
                         ),
                 new Student()
                         .setName(STUDENT_2_NAME)
                         .setSurname(STUDENT_2_SURNAME)
                         .setGroup(
                                 new Group()
-                                        .setNumberGroup(GROUP_2_NUMBER)
-                                        .setNubmberSubgroup(GROUP_2_SUBNUMBER)
+                                        .setNameGroup(GROUP_2_NAME)
+                                        .setNubmberGroup(GROUP_2_NUMBER)
                         )
         );
     }
@@ -126,16 +126,16 @@ public class StudentComporatorTest {
                         .setSurname(STUDENT_1_SURNAME)
                         .setGroup(
                                 new Group()
-                                        .setNumberGroup(GROUP_1_NUMBER)
-                                        .setNubmberSubgroup(GROUP_1_SUBNUMBER)
+                                        .setNameGroup(GROUP_1_NAME)
+                                        .setNubmberGroup(GROUP_1_NUMBER)
                         ),
                 new Student()
                         .setName(STUDENT_2_NAME)
                         .setSurname(STUDENT_2_SURNAME)
                         .setGroup(
                                 new Group()
-                                        .setNumberGroup(GROUP_2_NUMBER)
-                                        .setNubmberSubgroup(GROUP_2_SUBNUMBER)
+                                        .setNameGroup(GROUP_2_NAME)
+                                        .setNubmberGroup(GROUP_2_NUMBER)
                         )
         );
     }

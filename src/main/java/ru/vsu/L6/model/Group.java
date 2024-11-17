@@ -11,8 +11,8 @@ import java.util.Objects;
 @Accessors(chain = true)
 public class Group implements Comparable<Group> {
 
-    private String numberGroup;
-    private String nubmberSubgroup;
+    private String nameGroup;
+    private String nubmberGroup;
 
     @Override
     public int compareTo(Group o) {
@@ -20,7 +20,7 @@ public class Group implements Comparable<Group> {
             return 0;
         }
 
-        return this.numberGroup.compareTo(o.numberGroup);
+        return this.nameGroup.compareTo(o.nameGroup);
     }
 
     @Override
@@ -32,10 +32,10 @@ public class Group implements Comparable<Group> {
             return false;
         }
         Group group = (Group) o;
-        return Objects.equals(numberGroup, group.numberGroup) && Objects.equals(nubmberSubgroup, group.nubmberSubgroup);
+        return Objects.equals(nameGroup, group.nameGroup) && Objects.equals(nubmberGroup, group.nubmberGroup);
     }
 
     public int hashCode(){
-        return Objects.hash(numberGroup, nubmberSubgroup);
+        return Objects.hash(nameGroup, nubmberGroup);
     }
 }
