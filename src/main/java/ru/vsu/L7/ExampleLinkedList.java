@@ -33,9 +33,9 @@ public class ExampleLinkedList<T> implements Iterable<T> {
         tail = node;*/
     }
 
-    public ExampleNode<T> delete(){
+    public void delete(){
         if (size == 0){
-            return null;
+            return;
         }
         if (size == 1){
             head = null;
@@ -46,12 +46,11 @@ public class ExampleLinkedList<T> implements Iterable<T> {
             tail.setNext(null);
         }
         size--;
-        return head;
     }
 
-    public ExampleNode<T> delete(T value){
+    public void delete(T value){
         if (head == null){
-            return null;
+            return;
         }
         if (size == 1){
             head = null;
@@ -61,13 +60,13 @@ public class ExampleLinkedList<T> implements Iterable<T> {
             head = head.getNext();
             head.setPrevious(null);
             size--;
-            return head;
+            return;
         }
         if (tail.getValue().equals(value)) {
             tail = tail.getPrevious();
             tail.setNext(null);
             size--;
-            return head;
+            return;
         }
         ExampleNode<T> temp = new ExampleNode<>();
         while (temp.getValue() != null){
@@ -75,11 +74,10 @@ public class ExampleLinkedList<T> implements Iterable<T> {
                 temp.getPrevious().setNext(temp.getNext());
                 temp.getNext().setPrevious(temp.getPrevious());
                 size--;
-                return temp;
+                return;
             }
             temp = temp.getNext();
         }
-        return null;
     }
 
     public ExampleNode<T> findByValue(T value){

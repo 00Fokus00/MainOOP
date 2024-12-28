@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: 'postgres:latest'
+    container_name: 'vsu-oop'
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: vsu_oop_db
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
